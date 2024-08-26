@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -u
 
 HOME=$(pwd)
@@ -89,13 +89,13 @@ huggingface-cli login --token $HUGGINGFACE_TOKEN
 # install flux
 if ($install_flux); then
   cd $HOME || exit
-  source install_flux.sh
+  . install_flux.sh
 fi
 
 # install segment anything
 if ($install_segment_anything); then
   cd $HOME || exit
-  source install_segment_anything.sh
+  . install_segment_anything.sh
 fi
 
 # launch using new UI

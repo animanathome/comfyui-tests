@@ -69,6 +69,12 @@ if [ -d "ComfyUI/user/default/" ]; then
     cp comfy.settings.json ComfyUI/user/default/comfy.settings.json
 fi
 
+# copy over assets
+if [ -d "ComfyUI/input/" ]; then
+    echo "ComfyUI has been installed. Copying over assets..."
+    cp -r assets/ ComfyUI/input/
+fi
+
 pip install -U onnxruntime-gpu
 
 ## workflows as stored here

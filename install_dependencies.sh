@@ -21,28 +21,39 @@ install_flux=false
 install_segment_anything=false
 run_comfy=false
 
-while [ "$1" != "" ]; do
-  case $1 in
-    -if | --install_flux )  shift
-                   install_flux=true
-                   ;;
-    -isa | --install_segment_anything )  shift
-                   install_segment_anything=true
-                   ;;
-    -r | --run )  shift
-                   run_comfy=true
-                   ;;
-    -h | --help )  usage
-                   exit
-                   ;;
-    * )            usage
-                   exit 1
-  esac
-  shift
+# Check if no arguments were provided
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# Parse command line arguments
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -if|--install_flux)
+            install_flux=true
+            ;;
+        -isa|--install_segment_anything)
+            install_segment_anything=true
+            ;;
+        -r|--run)
+            run_comfy=true
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            usage
+            exit 1
+            ;;
+    esac
+    shift
 done
 
 # install ComfyUI
-cd INSTALLPATH || exit
+cd $INSTALLPATH || exit
 if [ -d "ComfyUI" ]; then
     echo "ComfyUI exists"
 else
@@ -53,7 +64,7 @@ else
 fi
 
 # copy over settings
-cd INSTALLPATH || exit
+cd $INSTALLPATH || exit
 if [ -d "ComfyUI/user/default/" ]; then
     echo "ComfyUI has been installed. Copying over settings..."
     cp comfy.settings.json ComfyUI/user/default/comfy.settings.json
@@ -70,7 +81,7 @@ if command -v huggingface-cli >/dev/null 2>&1; then
 else
     echo "huggingface-cli does not exist"
     pip install -U "huggingface_hub[cli]"
-    cd INSTALLPATH || exit
+    cd $INSTALLPATH || exit
 fi
 
 # log into hugging face so we can download flux
@@ -78,13 +89,13 @@ huggingface-cli login --token $HUGGINGFACE_TOKEN
 
 # install flux
 if ($install_flux); then
-  cd HOME || exit
+  cd $HOME || exit
   source install_flux.sh
 fi
 
 # install segment anything
 if ($install_segment_anything); then
-  cd HOME || exit
+  cd $HOME || exit
   source install_segment_anything.sh
 fi
 

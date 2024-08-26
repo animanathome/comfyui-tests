@@ -72,7 +72,7 @@ fi
 # copy over assets
 if [ -d "ComfyUI/input/" ]; then
     echo "ComfyUI has been installed. Copying over assets..."
-    cp -r assets/ ComfyUI/input/
+    cp -r assets/* ComfyUI/input/
 fi
 
 pip install -U onnxruntime-gpu
@@ -103,6 +103,11 @@ if ($install_segment_anything); then
   cd $HOME || exit
   . install_segment_anything.sh
 fi
+
+# install BRIA
+cd $HOME || exit
+cd ComfyUI/custom_nodes/
+git clone https://github.com/ZHO-ZHO-ZHO/ComfyUI-BRIA_AI-RMBG.git
 
 # launch using new UI
 if ($run_comfy); then

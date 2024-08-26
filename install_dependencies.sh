@@ -2,7 +2,6 @@
 set -u
 
 HOME=$(pwd)
-INSTALLPATH=$(cd .. && pwd)
 
 # Check if HUGGINGFACE_TOKEN is set
 : "${HUGGINGFACE_TOKEN:?Variable HUGGINGFACE_TOKEN is not set}"
@@ -53,7 +52,7 @@ while [ $# -gt 0 ]; do
 done
 
 # install ComfyUI
-cd $INSTALLPATH || exit
+cd $HOME || exit
 if [ -d "ComfyUI" ]; then
     echo "ComfyUI exists"
 else
@@ -64,7 +63,7 @@ else
 fi
 
 # copy over settings
-cd $INSTALLPATH || exit
+cd $HOME || exit
 if [ -d "ComfyUI/user/default/" ]; then
     echo "ComfyUI has been installed. Copying over settings..."
     cp comfy.settings.json ComfyUI/user/default/comfy.settings.json
@@ -81,7 +80,7 @@ if command -v huggingface-cli >/dev/null 2>&1; then
 else
     echo "huggingface-cli does not exist"
     pip install -U "huggingface_hub[cli]"
-    cd $INSTALLPATH || exit
+    cd $HOME || exit
 fi
 
 # log into hugging face so we can download flux

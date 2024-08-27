@@ -12,12 +12,14 @@ usage() {
     echo "Options:"
     echo "  -if,  --install_flux                 Install Flux"
     echo "  -isa, --install_segment_anything     Install Segment anything"
+    echo "  -iad, --install_animate_diff         Install Animated diff"
     echo "  -r,   --run                          Run Comfy on completion"
     echo "  -h,   --help                         Display this help message"
 }
 
 install_flux=false
 install_segment_anything=false
+install_animate_diff=false
 run_comfy=false
 
 # Check if no arguments were provided
@@ -34,6 +36,9 @@ while [ $# -gt 0 ]; do
             ;;
         -isa|--install_segment_anything)
             install_segment_anything=true
+            ;;
+        -iad|--install_animate_diff)
+            install_animate_diff=true
             ;;
         -r|--run)
             run_comfy=true
@@ -102,6 +107,13 @@ fi
 if ($install_segment_anything); then
   cd $HOME || exit
   . install_segment_anything.sh
+fi
+
+# install animate diff
+cd $HOME || exit
+if ($install_animate_diff); then
+  cd $HOME || exit
+  . install_animate_diff.sh
 fi
 
 # install BRIA

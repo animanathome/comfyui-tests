@@ -106,10 +106,17 @@ fi
 
 # install BRIA
 cd $HOME || exit
-cd ComfyUI/custom_nodes/
-git clone https://github.com/ZHO-ZHO-ZHO/ComfyUI-BRIA_AI-RMBG.git
+if [ -d "ComfyUI/custom_nodes/ComfyUI-BRIA_AI-RMBG" ]; then
+    echo "ComfyUI-BRIA_AI-RMBG exists"
+else
+    echo "installing ComfyUI-BRIA_AI-RMBG"
+    cd ComfyUI/custom_nodes/
+    git clone https://github.com/ZHO-ZHO-ZHO/ComfyUI-BRIA_AI-RMBG.git
+    cd $HOME || exit
+    huggingface-cli download briaai/RMBG-1.4 model.pth --local-dir ComfyUI/custom_nodes/ComfyUI-BRIA_AI-RMBG/RMBG-1.4
+fi
 
 # launch using new UI
 if ($run_comfy); then
-    python ComfyUI/main.py --front-end-version Comfy-Org/ComfyUI_frontend@latest
+    python ComfyUI/main.py --port 8080 --front-end-version Comfy-Org/ComfyUI_frontend@latest
 fi

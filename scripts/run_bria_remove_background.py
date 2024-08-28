@@ -9,7 +9,6 @@ server_address = "http://127.0.0.1:8080"
 temp_directory = 'ComfyUI/temp/'
 output_directory = 'output'
 
-
 def prepare_workflow(workflow_file, input_file):
     with open(workflow_file, 'r') as file:
         workflow = json.load(file)
@@ -74,13 +73,17 @@ def get_output_filename(filename, suffix):
     return f'{name}{suffix}{extension}'
 
 
-# we can convert a workflow into the API format using the /api/convert_workflow endpoint
-workflow_file = 'api_workflows/bria-remove-background.json'
-directory = 'ComfyUI/input'
-input_files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+if __name__ == '__main__':
+    # apply the selected workflow to all images in the input directory
+    # and save the output images in the output directory
+    # NOTE: be sure that the comfyui server is running before executing this script
+    workflow_file = 'api_workflows/bria-remove-background.json'
+    directory = 'ComfyUI/input'
+    input_files = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
-for input_file in input_files:
-    output_file = get_output_filename(input_file, '_mask')
-    print('output_file', output_file)
-    workflow = prepare_workflow(workflow_file, input_file)
-    queue_prompt(workflow, output_file)
+    for input_file in input_files:
+        output_file = get_output_filename(input_file, '_mask')
+        print('output_file', output_file)
+
+        workflow = prepare_workflow(workflow_file, input_file)
+        queue_prompt(workflow, output_file)

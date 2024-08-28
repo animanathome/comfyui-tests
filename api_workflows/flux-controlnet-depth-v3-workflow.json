@@ -1,8 +1,8 @@
 {
   "3": {
     "inputs": {
-      "noise_seed": 324242532548,
-      "steps": 25,
+      "noise_seed": 324242532550,
+      "steps": 15,
       "timestep_to_start_cfg": 1,
       "true_gs": 3.5,
       "image_to_image_strength": 0,
@@ -36,7 +36,7 @@
   "4": {
     "inputs": {
       "clip_name1": "clip_l.safetensors",
-      "clip_name2": "t5xxl_fp16.safetensors",
+      "clip_name2": "t5xxl_fp8_e4m3fn.safetensors",
       "type": "flux"
     },
     "class_type": "DualCLIPLoader",
@@ -46,8 +46,8 @@
   },
   "5": {
     "inputs": {
-      "clip_l": "handsome woman in balenciaga style, fashion, vogue image",
-      "t5xxl": "handsome woman in balenciaga style, fashion, vogue image",
+      "clip_l": "",
+      "t5xxl": "woman with glasses, long red hair, red sweater, fashion, vogue image",
       "guidance": 4,
       "clip": [
         "4",
@@ -147,18 +147,6 @@
       "title": "CLIPTextEncodeFlux"
     }
   },
-  "21": {
-    "inputs": {
-      "images": [
-        "7",
-        0
-      ]
-    },
-    "class_type": "PreviewImage",
-    "_meta": {
-      "title": "Preview Image"
-    }
-  },
   "23": {
     "inputs": {
       "filename_prefix": "canny_res",
@@ -192,19 +180,6 @@
     "class_type": "PreviewImage",
     "_meta": {
       "title": "Preview Image"
-    }
-  },
-  "46": {
-    "inputs": {
-      "filename_prefix": "canny_process",
-      "images": [
-        "49",
-        0
-      ]
-    },
-    "class_type": "SaveImage",
-    "_meta": {
-      "title": "Save Image"
     }
   },
   "49": {

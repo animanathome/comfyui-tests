@@ -1,15 +1,19 @@
 import asyncio
+import logging
+
 from flask import Flask, request, jsonify
 from werkzeug.exceptions import BadRequest
+
 from download_utils import retrieve_media_list
 
 app = Flask(__name__)
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 @app.route('/', methods=['GET'])
 def home():
     return "Welcome to the server!"
-
 
 @app.route('/', methods=['POST'])
 def handle_post():
@@ -29,7 +33,6 @@ def handle_post():
     except Exception as e:
         logger.exception("An error occurred while processing the request")
         return jsonify({"error": "Internal server error"}), 500
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=7501, debug=True)

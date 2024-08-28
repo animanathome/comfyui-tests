@@ -13,6 +13,7 @@ usage() {
     echo "  -if,  --install_flux                 Install Flux"
     echo "  -isa, --install_segment_anything     Install Segment anything"
     echo "  -iad, --install_animate_diff         Install Animated diff"
+    echo "  -icg, --install_caption_generation   Install Caption Generation"
     echo "  -r,   --run                          Run Comfy on completion"
     echo "  -h,   --help                         Display this help message"
 }
@@ -20,6 +21,7 @@ usage() {
 install_flux=false
 install_segment_anything=false
 install_animate_diff=false
+install_caption_generation=false
 run_comfy=false
 
 # Check if no arguments were provided
@@ -39,6 +41,9 @@ while [ $# -gt 0 ]; do
             ;;
         -iad|--install_animate_diff)
             install_animate_diff=true
+            ;;
+        -icg|--install_caption_generation)
+            install_caption_generation=true
             ;;
         -r|--run)
             run_comfy=true
@@ -100,20 +105,27 @@ huggingface-cli login --token $HUGGINGFACE_TOKEN
 # install flux
 if ($install_flux); then
   cd $HOME || exit
-  . install_flux.sh
+  . install/install_flux.sh
 fi
 
 # install segment anything
 if ($install_segment_anything); then
   cd $HOME || exit
-  . install_segment_anything.sh
+  . install/install_segment_anything.sh
+fi
+
+# install caption generation
+cd $HOME || exit
+if ($install_caption_generation); then
+  cd $HOME || exit
+  . install/install_image_captioning.sh
 fi
 
 # install animate diff
 cd $HOME || exit
 if ($install_animate_diff); then
   cd $HOME || exit
-  . install_animate_diff.sh
+  . install/install_animate_diff.sh
 fi
 
 # install BRIA

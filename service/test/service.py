@@ -5,7 +5,7 @@ import json
 def test_payload():
     url = 'http://localhost:7501'  # Adjust this to your actual server address and port
 
-    with open('./test/sample_payload.json', 'r') as file:
+    with open('./service/test/sample_payload.json', 'r') as file:
         data = json.load(file)
 
     json_data = json.dumps(data)

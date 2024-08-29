@@ -27,9 +27,9 @@ cd $HOME || exit
 # python install.py install llama-cpp-python which ends up failing so we're doing it manually here
 # https://github.com/abetlen/llama-cpp-python
 # pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
-# CMAKE_ARGS="-DGGML_CUDA=off" pip install llama-cpp-python -> CUDA support doesn't work
+CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLA -DGGML_CUDA=on" pip install llama-cpp-python --upgrade --no-cache-dir
 #CMAKE_ARGS="-DGGML_BLAS=ON -DGGML_BLAS_VENDOR=OpenBLAS" pip install llama-cpp-python
-pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu --upgrade --force-reinstall --no-cache-dir
+#pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cpu --upgrade --force-reinstall --no-cache-dir
 
 huggingface-cli download jartine/llava-v1.5-7B-GGUF llava-v1.5-7b-Q4_K.gguf --local-dir ComfyUI/custom_nodes/ComfyUI-LLaVA-Captioner/models/
 huggingface-cli download jartine/llava-v1.5-7B-GGUF llava-v1.5-7b-mmproj-Q4_0.gguf --local-dir ComfyUI/custom_nodes/ComfyUI-LLaVA-Captioner/models/

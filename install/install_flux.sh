@@ -57,13 +57,33 @@ huggingface-cli download XLabs-AI/flux-controlnet-hed-v3 flux-hed-controlnet-v3.
 huggingface-cli download XLabs-AI/flux-controlnet-hed-v3 flux-controlnet-hed-v3-workflow.json --local-dir ComfyUI/user/default/workflows
 
 # loras
-huggingface-cli download XLabs-AI/flux-RealismLora lora.safetensors --local-dir ComfyUI/models/xlabs/loras
-huggingface-cli download XLabs-AI/flux-lora-collection disney_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
-huggingface-cli download XLabs-AI/flux-lora-collection furry_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
-huggingface-cli download XLabs-AI/flux-lora-collection realism_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
-huggingface-cli download XLabs-AI/flux-lora-collection scenery_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
-huggingface-cli download XLabs-AI/flux-lora-collection art_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-RealismLora lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-lora-collection disney_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-lora-collection furry_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-lora-collection realism_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-lora-collection scenery_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
+#huggingface-cli download XLabs-AI/flux-lora-collection art_lora.safetensors --local-dir ComfyUI/models/xlabs/loras
 
+huggingface-cli download XLabs-AI/flux-lora-collection anime_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+huggingface-cli download XLabs-AI/flux-lora-collection art_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+huggingface-cli download XLabs-AI/flux-lora-collection disney_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+huggingface-cli download XLabs-AI/flux-lora-collection mjv6_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+huggingface-cli download XLabs-AI/flux-lora-collection realism_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+huggingface-cli download XLabs-AI/flux-lora-collection scenery_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
+
+
+
+
+
+
+
+
+
+
+
+
+
+wget  -c https://github.com/XLabs-AI/x-flux-comfyui/blob/main/workflows/lora_workflow.json -P ComfyUI/user/default/workflows
 
 
 

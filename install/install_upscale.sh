@@ -5,8 +5,8 @@ repos=(
     "https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet"
     "https://github.com/city96/ComfyUI-GGUF"
     "https://github.com/shiimizu/ComfyUI-TiledDiffusion"
-    "https://github.com/stavsap/comfyui-ollama"
-    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts"
+    "https://github.com/stavsap/comfyui-ollama" # +1
+    "https://github.com/pythongosssss/ComfyUI-Custom-Scripts" # +1
     "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
     "https://github.com/rgthree/rgthree-comfy"
     "https://github.com/Derfuu/Derfuu_ComfyUI_ModdedNodes"

@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.exceptions import BadRequest
 
 from download_utils import retrieve_media_list
@@ -14,6 +14,12 @@ logger = logging.getLogger(__name__)
 @app.route('/', methods=['GET'])
 def home():
     return "Welcome to the server!"
+
+
+@app.route('/media/<path:filename>')
+def serve_media(filename):
+    return send_from_directory('/teamspace/studios/this_studio/comfyui-tests/assets/', filename)
+
 
 @app.route('/', methods=['POST'])
 def handle_post():

@@ -71,7 +71,10 @@ huggingface-cli download XLabs-AI/flux-lora-collection mjv6_lora_comfy_converted
 huggingface-cli download XLabs-AI/flux-lora-collection realism_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
 huggingface-cli download XLabs-AI/flux-lora-collection scenery_lora_comfy_converted.safetensors --local-dir ComfyUI/models/xlabs/loras
 
+# custom - manu
 huggingface-cli download animanatwork/simpletuner-lora pytorch_lora_weights.safetensors --local-dir ComfyUI/models/xlabs/loras
+
+huggingface-cli download animanatwork/kaegan-lora pytorch_lora_weights.safetensors --local-dir ComfyUI/models/xlabs/loras
 
 
 

@@ -1,5 +1,5 @@
 
-# Run get media service
+# Run get media service on port 7501
 Simple service which downloads the media list send to it. If an media item is a video, it will download the video and extract an image. 
 ```bash
 ./install_dependencies.sh
